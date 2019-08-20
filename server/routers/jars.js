@@ -10,7 +10,7 @@ router.post('/jars', (req, res) => {
   try {
     Jar.find({ ownerFirebaseId, jarName }).then(jars => {
       if (jars.length > 0) {
-        console.log(res);
+        // console.log(res);
         res.send('A jar by that name already exists');
       } else {
         jar.save();

@@ -1,5 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function AddJobPage() {
-  return <div>Add Job</div>;
+  const [newNote, setNewNote] = useState('');
+
+  const onChange = e => {
+    setNewNote(e.target.value);
+  };
+  return (
+    <form id='note-form'>
+      <textarea
+        onChange={onChange}
+        placeholder='Add a new job'
+        value={newNote}
+      />
+      <button>Submit</button>
+    </form>
+  );
 }

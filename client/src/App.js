@@ -1,17 +1,16 @@
 import React from 'react';
-import Logo from './components/Logo';
-import Navbar from './components/Navbar';
-import Jar from './components/Jar';
+import firebase from './contexts/firebase/firebase';
+import FirebaseContext from './contexts/firebase/context';
 
 import '../src/styles/styles.scss';
 
+import AppRouter from './AppRouter';
+
 function App() {
   return (
-    <div className='App'>
-      <Navbar />
-      <Logo />
-      <Jar />
-    </div>
+    <FirebaseContext.Provider value={new firebase()}>
+      <AppRouter />
+    </FirebaseContext.Provider>
   );
 }
 

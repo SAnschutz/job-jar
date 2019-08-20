@@ -1,5 +1,42 @@
+//Base colors
+
+$sky-blue: rgba(102, 195, 236, 1);
+$slate-blue: rgba(95, 112, 190, 1);
+$yellow: rgba(254, 242, 52, 1);
+$dark-slate-blue: rgba(74, 90, 150, 1);
+$dark-red: #b15679;
+$bright-red: rgba(237, 73, 97, 1);
+$coral: rgba(242, 134, 48, 1);
+$green: rgba(98, 207, 107, 1);
+$white: rgba(252, 253, 253, 1);
+$brown: rgba(126, 79, 21, 1);
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  line-height: 1.1;
+}
+
+button {
+  display: inline-block;
+  margin: 10px;
+  margin-top: 10px;
+  height: 30px;
+  width: 200px;
+  border-radius: 5px;
+  background: $slate-blue;
+  color: $white;
+  font-size: 16px;
+  border: 1px solid $dark-slate-blue;
+  &:hover {
+    transform: translate(-2px, -2px);
+    transition: 0.1s;
+    box-shadow: 4px 4px $dark-slate-blue;
+  }
+  &:focus {
+    outline: none;
+  }
 }
