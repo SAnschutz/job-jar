@@ -22,7 +22,7 @@ const LoginPageBase = props => {
 
     axios
       .post('/user', user)
-      .then(res => console.log(res.data, 'from axios call'));
+      .then(res => console.log(res.data, 'User is logged in'));
   };
 
   const openEmailLoginModal = () => {

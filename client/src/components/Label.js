@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function Label(props) {
-  const displayName = props.firstName ? props.firstName + "'s" : 'My';
+  const jarName = props.jarName;
+  const displayName = jarName ? jarName + "'s" : 'My';
+  console.log('from label: ', displayName);
 
   return (
     <div id='label'>

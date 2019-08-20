@@ -8,7 +8,8 @@
   background: $slate-blue;
   text-align: right;
 
-  a {
+  a,
+  label {
     color: $white;
     display: inline-block;
     margin: 10px 40px;
@@ -17,5 +18,9 @@
       // text-decoration: underline;
       transform: translate(-2px, -2px);
     }
+  }
+
+  label {
+    margin-right: 10px;
   }
 }

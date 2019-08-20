@@ -23,8 +23,8 @@ router.post('/jars', (req, res) => {
 });
 
 //get all jars associated with current user
-router.get('/jars', (req, res) => {
-  const ownerFirebaseId = req.body.ownerFirebaseId;
+router.get('/jars/:id', (req, res) => {
+  const ownerFirebaseId = req.params.id;
   try {
     Jar.find({ ownerFirebaseId }).then(jars => {
       res.send(jars);

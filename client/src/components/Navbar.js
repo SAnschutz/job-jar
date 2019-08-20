@@ -5,23 +5,39 @@ import { WithFirebase } from '../contexts/firebase/context';
 
 const NavbarBase = props => {
   const logout = () => props.firebase.signOut();
-  const selectJar = () => console.log('select different jar');
-  const createJar = () => console.log('create new jar');
+  const isSignedIn = props.firebase.auth.currentUser;
+
+  const createJar = () => {
+    console.log('create new jar');
+  };
+
+  // const changeJar = e => {
+
+  // };
+
   return (
-    <div className='navbar'>
-      <Link to='#' onClick={logout}>
-        Log Out
-      </Link>
-      <Link to='#' onClick={selectJar}>
-        Switch Jars
-      </Link>
-      <select>
-        <option value='Shela'>Shela's Jar</option>
-        <option value='Kelly'>Kelly's Jar</option>
-      </select>
-      <Link to='#' onClick={createJar}>
-        Create New Jar
-      </Link>
+    <div>
+      {isSignedIn && (
+        <div className='navbar'>
+          {' '}
+          <label for='select-jar-menu'>Your Jars:</label>
+          <select id='select-jar-menu' onChange={props.changeJar}>
+            {props.jars.length > 0 ? (
+              props.jars.map(jar => {
+                return <option value={jar.jarName}>{jar.jarName}'s Jar</option>;
+              })
+            ) : (
+              <option value=''>No jars</option>
+            )}
+          </select>
+          <Link to='#' onClick={createJar}>
+            Create New Jar
+          </Link>
+          <Link to='#' onClick={logout}>
+            Log Out
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
