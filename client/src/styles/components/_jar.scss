@@ -1,0 +1,48 @@
+.jar-page {
+  height: 100%;
+  width: 100vw;
+  background: $sky-blue;
+
+  #select-job-button {
+    margin: 50px auto 40px;
+    transform: scale(1.3);
+  }
+
+  .page-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .jar-container {
+    position: relative;
+    grid-column: 2/3;
+    width: 40vw;
+
+    #label {
+      position: absolute;
+      left: 45%;
+      top: 60%;
+      transform: translate(-50%, -50%);
+      border-top: 2px solid $dark-red;
+      border-bottom: 2px solid $dark-red;
+      padding: 25px 0;
+      color: $dark-slate-blue;
+      font-family: 'Delius Unicase', cursive;
+      font-size: 28px;
+    }
+    p {
+      padding: 0;
+      margin: 0;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      line-height: 0.5;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  button {
+    display: block;
+    margin: 10px auto;
+  }
+}

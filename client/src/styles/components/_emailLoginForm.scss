@@ -1,0 +1,61 @@
+.email-form {
+  background: $sky-blue;
+  height: 100%;
+  form {
+    padding-top: 20vh;
+
+    input {
+      display: block;
+    }
+
+    button,
+    input {
+      display: block;
+      margin: 10px auto;
+      height: 30px;
+      width: 200px;
+      font-size: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .submit-button {
+      width: 100px;
+      margin: 20px auto;
+    }
+
+    .link {
+      background: none;
+      border: none;
+      margin-top: 20px;
+      width: 400px;
+      text-decoration: underline;
+      color: $dark-slate-blue;
+      &:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: none;
+        color: $white;
+        transition-duration: 0.4s;
+      }
+    }
+
+    #close-modal {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background: none;
+      outline: none;
+      height: 20px;
+      width: 20px;
+      color: $dark-slate-blue;
+      border: none;
+      font-size: 24px;
+
+      &:hover {
+        transform: none;
+        box-shadow: none;
+        color: $white;
+        transition: 0.2s;
+      }
+    }
+  }
+}
