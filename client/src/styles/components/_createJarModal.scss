@@ -1,0 +1,31 @@
+.new-jar-modal {
+  position: relative;
+  width: 80vw;
+  max-width: 400px;
+
+  .close-modal-button {
+    height: 20px;
+    width: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+  }
+
+  input {
+    display: block;
+    margin: 0 auto;
+    height: 30px;
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 24px;
+    padding: 10px;
+  }
+
+  button,
+  input {
+    width: 150px;
+  }
+}

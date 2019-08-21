@@ -38,7 +38,7 @@ export default function EmailLoginModal(props) {
   };
 
   return (
-    <div className='email-form'>
+    <div>
       <form onSubmit={onSubmit}>
         <input
           placeholder='E-mail Address'
@@ -60,7 +60,7 @@ export default function EmailLoginModal(props) {
             onChange={e => setPassword2(e.target.value)}
           />
         )}
-        <button id='close-modal' onClick={closeModal}>
+        <button className='close-modal-button' onClick={closeModal}>
           X
         </button>
         <button className='submit-button' onClick={onSubmit}>

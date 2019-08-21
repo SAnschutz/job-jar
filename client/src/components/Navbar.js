@@ -13,8 +13,10 @@ const NavbarBase = props => {
 
   const [createNewJarModalIsOpen, setCreateNewJarModalIsOpen] = useState(false);
 
-  const openNewJarModal = () => setCreateNewJarModalIsOpen(true);
-
+  const openNewJarModal = () => {
+    props.setIsOpenFirstJarModal(false);
+    setCreateNewJarModalIsOpen(true);
+  };
   return (
     <div>
       {isSignedIn && (
@@ -31,12 +33,15 @@ const NavbarBase = props => {
             )}
           </select>
           <Link to='#' onClick={openNewJarModal}>
-            Create New Jar
+            Create A New Jar
           </Link>
           <Link to='#' onClick={logout}>
             Log Out
           </Link>
-          <Modal isOpen={createNewJarModalIsOpen}>
+          <Modal
+            isOpen={createNewJarModalIsOpen}
+            className='new-jar-modal modal'
+          >
             <CreateJarModal
               setCreateNewJarModalIsOpen={setCreateNewJarModalIsOpen}
               createJar={props.createJar}

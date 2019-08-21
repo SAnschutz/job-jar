@@ -7,14 +7,13 @@ import AddJobForm from './AddJobForm';
 import FirstJarModal from './FirstJarModal';
 import Modal from 'react-modal';
 import { WithFirebase } from '../contexts/firebase/context';
-import { history } from '../AppRouter';
 
 const JarBase = props => {
   const [currentJar, setCurrentJar] = useState({});
   const [currentJarName, setCurrentJarName] = useState('');
   const [jars, setJars] = useState([]);
   const [newJob, setNewJob] = useState('');
-  const [isOpenFirstJarModal, setIsOpenFirstJarModal] = useState(false);
+  const [isOpenFirstJarModal, setIsOpenFirstJarModal] = useState(true);
 
   console.log(jars);
 
@@ -49,9 +48,8 @@ const JarBase = props => {
       console.log('current jar: ', jars.data[0]);
 
       setJars(jars.data);
-      {
-        jars.data.length === 0 && setIsOpenFirstJarModal(true);
-      }
+
+      jars.data.length === 0 && setIsOpenFirstJarModal(true);
 
       selectCurrentJar(jars.data[0]);
 
@@ -61,8 +59,14 @@ const JarBase = props => {
 
   return (
     <div className='jar-page'>
-      <Navbar jars={jars} changeJar={changeJar} createJar={createJar} />
-      <Modal isOpen={isOpenFirstJarModal}>
+      <Navbar
+        jars={jars}
+        changeJar={changeJar}
+        createJar={createJar}
+        isOpenFirstJarModal={isOpenFirstJarModal}
+        setIsOpenFirstJarModal={setIsOpenFirstJarModal}
+      />
+      <Modal isOpen={isOpenFirstJarModal} className='first-jar-modal modal'>
         <FirstJarModal setIsOpenFirstJarModal={setIsOpenFirstJarModal} />
       </Modal>
       <button id='select-job-button'>Select a Random Job</button>

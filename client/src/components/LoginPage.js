@@ -36,7 +36,7 @@ const LoginPageBase = props => {
       <div className='button-group'>
         <button onClick={loginWithGoogle}>Log In With Google</button>
         <button onClick={openEmailLoginModal}>Log In With Email</button>
-        <Modal isOpen={emailModalIsOpen}>
+        <Modal isOpen={emailModalIsOpen} className='email-login-modal modal'>
           <EmailLoginModal setEmailModalIsOpen={setEmailModalIsOpen} />
         </Modal>
       </div>

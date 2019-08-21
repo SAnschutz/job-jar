@@ -44,3 +44,18 @@ button {
     outline: none;
   }
 }
+
+.modal {
+  height: 200px;
+  width: 80vw;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 75px;
+  padding: 10px;
+  background: $white;
+  border: 5px solid $dark-slate-blue;
+
+  .text {
+    margin-top: 40px;
+  }
+}

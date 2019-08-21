@@ -1,61 +1,51 @@
-.email-form {
-  background: $sky-blue;
-  height: 100%;
-  form {
-    padding-top: 20vh;
+.email-login-modal {
+  position: relative;
+  width: 80vw;
+  max-width: 500px;
+  height: 80vh;
+  max-height: 500px;
+  padding-top: 100px;
+  input {
+    display: block;
+    margin: 0 auto;
+    height: 30px;
+    font-size: 24px;
+  }
 
-    input {
-      display: block;
-    }
+  p {
+    font-size: 24px;
+    padding: 10px;
+  }
 
-    button,
-    input {
-      display: block;
-      margin: 10px auto;
-      height: 30px;
-      width: 200px;
-      font-size: 12px;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+  button {
+    width: 150px;
+  }
 
-    .submit-button {
-      width: 100px;
-      margin: 20px auto;
-    }
+  input {
+    width: 300px;
+    margin: 10px auto;
+  }
+  .close-modal-button {
+    height: 20px;
+    width: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+  }
 
-    .link {
-      background: none;
+  .link {
+    width: 100%;
+    border: none;
+    outline: none;
+    text-decoration: underline;
+    background: none;
+    color: $dark-slate-blue;
+    font-size: 16px;
+    &:hover {
       border: none;
-      margin-top: 20px;
-      width: 400px;
-      text-decoration: underline;
-      color: $dark-slate-blue;
-      &:hover {
-        transform: translate(-2px, -2px);
-        box-shadow: none;
-        color: $white;
-        transition-duration: 0.4s;
-      }
-    }
-
-    #close-modal {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      background: none;
       outline: none;
-      height: 20px;
-      width: 20px;
-      color: $dark-slate-blue;
-      border: none;
-      font-size: 24px;
-
-      &:hover {
-        transform: none;
-        box-shadow: none;
-        color: $white;
-        transition: 0.2s;
-      }
+      box-shadow: none;
     }
   }
 }
