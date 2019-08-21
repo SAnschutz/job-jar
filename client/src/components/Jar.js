@@ -3,7 +3,9 @@ import axios from 'axios';
 import jar from '../assets/jarsilhouette.svg';
 import Label from '../components/Label';
 import Navbar from '../components/Navbar';
-import AddJobForm from '../components/AddJobForm';
+import AddJobForm from './AddJobForm';
+import FirstJarModal from './FirstJarModal';
+import Modal from 'react-modal';
 import { WithFirebase } from '../contexts/firebase/context';
 import { history } from '../AppRouter';
 
@@ -12,6 +14,7 @@ const JarBase = props => {
   const [currentJarName, setCurrentJarName] = useState('');
   const [jars, setJars] = useState([]);
   const [newJob, setNewJob] = useState('');
+  const [isOpenFirstJarModal, setIsOpenFirstJarModal] = useState(false);
 
   console.log(jars);
 
@@ -47,18 +50,21 @@ const JarBase = props => {
 
       setJars(jars.data);
       {
-        jars.data.length === 0 && history.push('/firstjar');
+        jars.data.length === 0 && setIsOpenFirstJarModal(true);
       }
 
       selectCurrentJar(jars.data[0]);
-    });
 
-    console.log(jars, currentJar);
+      console.log(jars, currentJar);
+    });
   }, []);
 
   return (
     <div className='jar-page'>
       <Navbar jars={jars} changeJar={changeJar} createJar={createJar} />
+      <Modal isOpen={isOpenFirstJarModal}>
+        <FirstJarModal setIsOpenFirstJarModal={setIsOpenFirstJarModal} />
+      </Modal>
       <button id='select-job-button'>Select a Random Job</button>
       <div className='page-content'>
         <div className='jar-container'>
