@@ -9,7 +9,7 @@ import { WithFirebase } from '../contexts/firebase/context';
 const JarBase = props => {
   const [currentJar, setCurrentJar] = useState({});
   const [currentJarName, setCurrentJarName] = useState('');
-  const [jars, setJars] = useState({});
+  const [jars, setJars] = useState([]);
   const [newJob, setNewJob] = useState('');
 
   console.log(jars);
@@ -21,11 +21,23 @@ const JarBase = props => {
   const user = { firebaseId, email };
   console.log(user);
 
+  const selectCurrentJar = jarName => {
+    if (jarName) {
+      setCurrentJar(jarName);
+      setCurrentJarName(jarName.jarName);
+    }
+  };
+
+  const createJar = jarName => {
+    axios.post('/jars', { jarName, ownerFirebaseId: firebaseId }).then(jars => {
+      selectCurrentJar(jarName);
+    });
+  };
+
   const changeJar = e => {
     const selectedJarName = e.target.value;
     const newJar = jars.find(jar => jar.jarName === selectedJarName);
-    setCurrentJar(newJar);
-    setCurrentJarName(newJar.jarName);
+    selectCurrentJar(newJar);
     console.log(currentJar);
   };
 
@@ -36,9 +48,7 @@ const JarBase = props => {
 
       setJars(jars.data);
 
-      const currentJar = jars.data[0];
-      setCurrentJar(currentJar);
-      setCurrentJarName(currentJar.jarName);
+      selectCurrentJar(jars.data[0]);
     });
 
     console.log(jars, currentJar);
@@ -46,7 +56,7 @@ const JarBase = props => {
 
   return (
     <div className='jar-page'>
-      <Navbar jars={jars} changeJar={changeJar} />
+      <Navbar jars={jars} changeJar={changeJar} createJar={createJar} />
       <button id='select-job-button'>Select a Random Job</button>
       <div className='page-content'>
         <div className='jar-container'>

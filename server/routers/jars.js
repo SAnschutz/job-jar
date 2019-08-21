@@ -8,13 +8,12 @@ router.post('/jars', (req, res) => {
   const ownerFirebaseId = req.body.ownerFirebaseId;
   const jar = new Jar({ jarName, ownerFirebaseId });
   try {
-    Jar.find({ ownerFirebaseId, jarName }).then(jars => {
+    Jar.find({ ownerFirebaseId, jarName }).then(async jars => {
       if (jars.length > 0) {
-        // console.log(res);
         res.send('A jar by that name already exists');
       } else {
-        jar.save();
-        res.send(jar);
+        await jar.save();
+        Jar.find({ ownerFirebaseId }).then(jars => res.send(jars));
       }
     });
   } catch (e) {
