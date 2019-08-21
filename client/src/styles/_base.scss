@@ -20,6 +20,10 @@ $brown: rgba(126, 79, 21, 1);
   line-height: 1.1;
 }
 
+body {
+  background: $sky-blue;
+}
+
 button {
   display: inline-block;
   margin: 10px;

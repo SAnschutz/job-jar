@@ -5,6 +5,7 @@ import Label from '../components/Label';
 import Navbar from '../components/Navbar';
 import AddJobForm from '../components/AddJobForm';
 import { WithFirebase } from '../contexts/firebase/context';
+import { history } from '../AppRouter';
 
 const JarBase = props => {
   const [currentJar, setCurrentJar] = useState({});
@@ -14,9 +15,7 @@ const JarBase = props => {
 
   console.log(jars);
 
-  // const firebaseId = props.firebase.currentUserId();
-
-  const firebaseId = '123456Sally';
+  const firebaseId = props.firebase.currentUserId();
   const email = props.firebase.currentUserEmail();
   const user = { firebaseId, email };
   console.log(user);
@@ -47,6 +46,9 @@ const JarBase = props => {
       console.log('current jar: ', jars.data[0]);
 
       setJars(jars.data);
+      {
+        jars.data.length === 0 && history.push('/firstjar');
+      }
 
       selectCurrentJar(jars.data[0]);
     });

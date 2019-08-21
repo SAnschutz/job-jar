@@ -9,6 +9,8 @@ const NavbarBase = props => {
   const logout = () => props.firebase.signOut();
   const isSignedIn = props.firebase.auth.currentUser;
 
+  console.log(props, ' from Navbar');
+
   const [createNewJarModalIsOpen, setCreateNewJarModalIsOpen] = useState(false);
 
   const openNewJarModal = () => setCreateNewJarModalIsOpen(true);
@@ -36,8 +38,8 @@ const NavbarBase = props => {
           </Link>
           <Modal isOpen={createNewJarModalIsOpen}>
             <CreateJarModal
-              createJar={props.createJar}
               setCreateNewJarModalIsOpen={setCreateNewJarModalIsOpen}
+              createJar={props.createJar}
             />
           </Modal>
         </div>

@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import { WithFirebase } from '../contexts/firebase/context';
 
 const CreateJarModalBase = props => {
+  console.log(props);
   const [jarName, setJarName] = useState('');
 
   const closeModal = () => {
     props.setCreateNewJarModalIsOpen(false);
   };
 
+  const createJar = () => {
+    props.createJar(jarName);
+  };
+
   const onSubmit = e => {
     e.preventDefault();
-    props.createJar(jarName);
+    createJar();
     closeModal();
   };
 
