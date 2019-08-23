@@ -38,7 +38,6 @@ router.delete('/tasks/:taskId', (req, res) => {
       if (!task) {
         return res.send('No task with that ID');
       }
-      // console.log(task);
       res.send('task deleted');
     });
   } catch (e) {

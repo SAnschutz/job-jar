@@ -5,11 +5,8 @@ const User = require('../models/user');
 //Search for user based on firebaseId.  If exists, send user object.  If not, create user and send user object.
 
 router.post('/user', (req, res) => {
-  // console.log(req);
-  console.log(req.body);
   const firebaseId = req.body.firebaseId;
   const newUser = new User(req.body);
-  // console.log(firebaseId);
   try {
     User.findOne({ firebaseId }).then(async user => {
       if (user) {
