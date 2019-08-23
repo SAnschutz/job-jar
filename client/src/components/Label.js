@@ -3,7 +3,6 @@ import React from 'react';
 export default function Label(props) {
   const jarName = props.jarName;
   const displayName = jarName ? jarName + "'s" : 'My';
-  console.log('from label: ', displayName);
 
   return (
     <div id='label'>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-dom';
+// import { Link } from 'react-dom';
 // import Modal from 'react-modal';
 
 export default function EmailLoginModal(props) {
@@ -10,18 +10,17 @@ export default function EmailLoginModal(props) {
   const [password2, setPassword2] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const createAccount = () => {
-    props.firebase.createAccount(email, password).then(() => {
-      console.log('account created');
-    });
-  };
+  // const createAccount = () => {
+  //   props.firebase.createAccount(email, password).then(() => {
+  //     console.log('account created');
+  //   });
+  // };
 
-  const loginWithEmailAndPassword = () => {
-    props.firebase.loginWithEmailAndPassword(email, password).then(() => {
-      props.setEmailModalIsOpen(false);
-      // console.log(props.firebase.currentUserEmail());
-    });
-  };
+  // const loginWithEmailAndPassword = () => {
+  //   props.firebase.loginWithEmailAndPassword(email, password).then(() => {
+  //     props.setEmailModalIsOpen(false);
+  //   });
+  // };
 
   const closeModal = () => {
     props.setEmailModalIsOpen(false);
@@ -34,7 +33,6 @@ export default function EmailLoginModal(props) {
 
   const onSubmit = e => {
     e.preventDefault();
-    // console.log('email: ', email, 'password: ', password);
   };
 
   return (

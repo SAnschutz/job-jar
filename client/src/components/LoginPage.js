@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { WithFirebase } from '../contexts/firebase/context';
 
 import Navbar from '../components/Navbar';
 import EmailLoginModal from './EmailLoginModal';
-
-import history from '../AppRouter';
 
 const LoginPageBase = props => {
   const [emailModalIsOpen, setEmailModalIsOpen] = useState(false);
@@ -18,11 +15,8 @@ const LoginPageBase = props => {
     const firebaseId = await props.firebase.currentUserId();
     const email = await props.firebase.currentUserEmail();
     const user = { firebaseId, email };
-    console.log(user);
 
-    axios
-      .post('/user', user)
-      .then(res => console.log(res.data, 'User is logged in'));
+    axios.post('/user', user).then(res => console.log('User is logged in'));
   };
 
   const openEmailLoginModal = () => {

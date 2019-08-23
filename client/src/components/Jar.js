@@ -13,7 +13,7 @@ const JarBase = props => {
   const [currentJarName, setCurrentJarName] = useState('');
   const [jars, setJars] = useState([]);
   const [newJob, setNewJob] = useState('');
-  const [isOpenFirstJarModal, setIsOpenFirstJarModal] = useState(true);
+  const [isOpenFirstJarModal, setIsOpenFirstJarModal] = useState(false);
 
   console.log(jars);
 
@@ -30,9 +30,14 @@ const JarBase = props => {
   };
 
   const createJar = jarName => {
-    axios.post('/jars', { jarName, ownerFirebaseId: firebaseId }).then(jars => {
-      selectCurrentJar(jarName);
-    });
+    axios
+      .post('/jars', { jarName, ownerFirebaseId: firebaseId })
+      .then(jarList => {
+        setJars(jarList.data);
+        const newJar = jarList.data.find(jar => jar.jarName === jarName);
+
+        selectCurrentJar(newJar);
+      });
   };
 
   const changeJar = e => {
@@ -43,17 +48,18 @@ const JarBase = props => {
   };
 
   useEffect(() => {
-    axios.get(`/jars/${firebaseId}`).then(jars => {
-      console.log('jars: ', jars.data);
-      console.log('current jar: ', jars.data[0]);
+    axios.get(`/jars/${firebaseId}`).then(jarList => {
+      console.log('jars: ', jarList.data);
+      console.log('current jar: ', jarList.data[0]);
 
-      setJars(jars.data);
+      setJars(jarList.data);
+      console.log(jars);
 
-      jars.data.length === 0 && setIsOpenFirstJarModal(true);
+      jarList.data.length === 0 && setIsOpenFirstJarModal(true);
 
-      selectCurrentJar(jars.data[0]);
+      selectCurrentJar(jarList.data[0]);
 
-      console.log(jars, currentJar);
+      console.log(jarList.data, currentJar);
     });
   }, []);
 

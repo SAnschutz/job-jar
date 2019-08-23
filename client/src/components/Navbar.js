@@ -9,8 +9,6 @@ const NavbarBase = props => {
   const logout = () => props.firebase.signOut();
   const isSignedIn = props.firebase.auth.currentUser;
 
-  console.log(props, ' from Navbar');
-
   const [createNewJarModalIsOpen, setCreateNewJarModalIsOpen] = useState(false);
 
   const openNewJarModal = () => {
@@ -22,11 +20,15 @@ const NavbarBase = props => {
       {isSignedIn && (
         <div className='navbar'>
           {' '}
-          <label for='select-jar-menu'>Your Jars:</label>
+          <label>Your Jars:</label>
           <select id='select-jar-menu' onChange={props.changeJar}>
             {props.jars && props.jars.length > 0 ? (
               props.jars.map(jar => {
-                return <option value={jar.jarName}>{jar.jarName}'s Jar</option>;
+                return (
+                  <option value={jar.jarName} key={jar.jarName}>
+                    {jar.jarName}'s Jar
+                  </option>
+                );
               })
             ) : (
               <option value=''>No jars</option>
