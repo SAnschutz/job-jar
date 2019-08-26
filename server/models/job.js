@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const taskSchema = new mongoose.Schema(
+const jobSchema = new mongoose.Schema(
   {
     description: {
       type: String,
@@ -11,6 +11,10 @@ const taskSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: 'Jar'
+    },
+    currentJob: {
+      type: Boolean,
+      default: false
     },
     completed: {
       type: Boolean,
@@ -25,6 +29,6 @@ const taskSchema = new mongoose.Schema(
   }
 );
 
-const Task = mongoose.model('Task', taskSchema);
+const Job = mongoose.model('Job', jobSchema);
 
-module.exports = Task;
+module.exports = Job;

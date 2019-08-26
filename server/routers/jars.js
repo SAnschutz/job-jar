@@ -22,8 +22,8 @@ router.post('/jars', (req, res) => {
 });
 
 //get all jars associated with current user
-router.get('/jars/:id', (req, res) => {
-  const ownerFirebaseId = req.params.id;
+router.get('/jars/:userId', (req, res) => {
+  const ownerFirebaseId = req.params.userId;
   try {
     Jar.find({ ownerFirebaseId }).then(jars => {
       res.send(jars);
@@ -34,17 +34,17 @@ router.get('/jars/:id', (req, res) => {
 });
 
 //get jar by ID
-router.get('/jars/:id', (req, res) => {
-  const _id = req.params.id;
+router.get('/jars/jobs/:jarId', (req, res) => {
+  const jarId = req.params.jarId;
   try {
-    Jar.findById(_id).then(async jar => {
+    Jar.findById(jarId).then(async jar => {
       if (jar) {
-        await jar.populate('tasks').execPopulate();
-        res.json({ jarName: jar.jarName, tasks: jar.tasks });
+        await jar.populate('jobs').execPopulate();
+        res.send({ jarName: jar.jarName, jobs: jar.jobs });
       }
     });
   } catch (e) {
-    res.status(400).send();
+    res.status(400).send(e);
   }
 });
 

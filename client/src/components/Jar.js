@@ -5,22 +5,24 @@ import Label from '../components/Label';
 import Navbar from '../components/Navbar';
 import AddJobForm from './AddJobForm';
 import FirstJarModal from './FirstJarModal';
+import Alert from './Alert';
 import Modal from 'react-modal';
 import { WithFirebase } from '../contexts/firebase/context';
+import DisplayRandomJob from './DisplayRandomJob';
 
 const JarBase = props => {
+  const [isOpenFirstJarModal, setIsOpenFirstJarModal] = useState(false);
   const [currentJar, setCurrentJar] = useState({});
   const [currentJarName, setCurrentJarName] = useState('');
   const [jars, setJars] = useState([]);
-  const [newJob, setNewJob] = useState('');
-  const [isOpenFirstJarModal, setIsOpenFirstJarModal] = useState(false);
 
-  console.log(jars);
+  const [randomJob, setRandomJob] = useState('');
+  const [isDisplayedRandomJob, setIsDisplayedRandomJob] = useState(false);
+
+  const [alert, setAlert] = useState('');
+  const [isDisplayedAlert, setIsDisplayedAlert] = useState(false);
 
   const firebaseId = props.firebase.currentUserId();
-  const email = props.firebase.currentUserEmail();
-  const user = { firebaseId, email };
-  console.log(user);
 
   const selectCurrentJar = jarName => {
     if (jarName) {
@@ -44,22 +46,41 @@ const JarBase = props => {
     const selectedJarName = e.target.value;
     const newJar = jars.find(jar => jar.jarName === selectedJarName);
     selectCurrentJar(newJar);
-    console.log(currentJar);
+  };
+
+  const displayRandomJob = () => {
+    axios.get(`/jobs/${currentJar._id}`).then(jobs => {
+      const todoList = jobs.data.filter(job => job.completed === false);
+      if (todoList.length === 0) {
+        setAlert('You have no jobs in your jar.');
+        setIsDisplayedAlert(true);
+      } else {
+        const currentJob = todoList.find(job => job.currentJob === true);
+        if (currentJob) {
+          setRandomJob(currentJob);
+          setIsDisplayedRandomJob(true);
+        } else {
+          const randomIndex = Math.floor(Math.random() * todoList.length);
+          const randomJob = todoList[randomIndex];
+          setRandomJob(randomJob);
+
+          setIsDisplayedRandomJob(true);
+
+          axios.post(`jobs/select/${randomJob._id}`).then(() => {
+            console.log('Current job stored.');
+          });
+        }
+      }
+    });
   };
 
   useEffect(() => {
     axios.get(`/jars/${firebaseId}`).then(jarList => {
-      console.log('jars: ', jarList.data);
-      console.log('current jar: ', jarList.data[0]);
-
       setJars(jarList.data);
-      console.log(jars);
 
       jarList.data.length === 0 && setIsOpenFirstJarModal(true);
 
       selectCurrentJar(jarList.data[0]);
-
-      console.log(jarList.data, currentJar);
     });
   }, []);
 
@@ -75,13 +96,24 @@ const JarBase = props => {
       <Modal isOpen={isOpenFirstJarModal} className='first-jar-modal modal'>
         <FirstJarModal setIsOpenFirstJarModal={setIsOpenFirstJarModal} />
       </Modal>
-      <button id='select-job-button'>Select a Random Job</button>
+      <Modal isOpen={isDisplayedRandomJob} className='random-job-modal modal'>
+        <DisplayRandomJob
+          randomJob={randomJob}
+          setIsDisplayedRandomJob={setIsDisplayedRandomJob}
+        />
+      </Modal>
+      <Modal isOpen={isDisplayedAlert} className='alert-modal modal'>
+        <Alert alert={alert} setIsDisplayedAlert={setIsDisplayedAlert} />
+      </Modal>
+      <button id='select-job-button' onClick={displayRandomJob}>
+        Select a Random Job
+      </button>
       <div className='page-content'>
         <div className='jar-container'>
           <img src={jar} alt='' className='jar' />
           <Label jarName={currentJarName} />
         </div>
-        <AddJobForm />
+        <AddJobForm jarId={currentJar._id} />
       </div>
     </div>
   );

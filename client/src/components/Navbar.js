@@ -19,9 +19,11 @@ const NavbarBase = props => {
     <div>
       {isSignedIn && (
         <div className='navbar'>
-          {' '}
-          <label>Your Jars:</label>
+          <label>Select Jar:</label>
           <select id='select-jar-menu' onChange={props.changeJar}>
+            <option disabled selected value=''>
+              Choose Jar
+            </option>
             {props.jars && props.jars.length > 0 ? (
               props.jars.map(jar => {
                 return (

@@ -17,8 +17,8 @@ const jarSchema = new mongoose.Schema(
   }
 );
 
-jarSchema.virtual('tasks', {
-  ref: 'Task',
+jarSchema.virtual('jobs', {
+  ref: 'Job',
   localField: '_id',
   foreignField: 'jarId'
 });

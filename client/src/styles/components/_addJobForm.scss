@@ -1,21 +1,28 @@
-#note-form {
-  margin: auto auto 50px;
-  textarea {
-    display: block;
-    width: 30vw;
-    height: 200px;
-    background: $yellow;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    font-size: 36px;
-    text-align: center;
-    padding: 30px;
-    color: $dark-slate-blue;
-    &:focus {
-      outline: 2px solid $dark-red;
+.add-job-page {
+  margin: auto auto 30px;
+
+  #job-form {
+    textarea {
+      display: block;
+      width: 30vw;
+      height: 200px;
+      margin-top: 20px;
+      background: $yellow;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      font-size: 36px;
+      text-align: center;
+      padding: 30px;
+      color: $dark-slate-blue;
+      &:focus {
+        outline: 2px solid $dark-red;
+      }
+      &::placeholder {
+        color: lighten($slate-blue, 25%);
+      }
     }
-    &::placeholder {
-      color: lighten($slate-blue, 25%);
+    input {
+      @extend button;
     }
   }
 }
