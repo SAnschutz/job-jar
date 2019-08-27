@@ -22,7 +22,7 @@ export default function AddJobPage(props) {
   };
 
   return (
-    <div className='add-job-page'>
+    <div className='add-job-form'>
       {!props.jarId && <h1>Select a jar to begin</h1>}
       {message && <p>{message}</p>}
       <form id='job-form' onSubmit={onSubmit}>

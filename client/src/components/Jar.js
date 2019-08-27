@@ -105,15 +105,23 @@ const JarBase = props => {
       <Modal isOpen={isDisplayedAlert} className='alert-modal modal'>
         <Alert alert={alert} setIsDisplayedAlert={setIsDisplayedAlert} />
       </Modal>
-      <button id='select-job-button' onClick={displayRandomJob}>
-        Select a Random Job
-      </button>
-      <div className='page-content'>
+      <div className='flex-container'>
         <div className='jar-container'>
-          <img src={jar} alt='' className='jar' />
-          <Label jarName={currentJarName} />
+          <button id='select-job-button' onClick={displayRandomJob}>
+            Select a Random Job
+          </button>
+          <div className='jar-container'>
+            <img src={jar} alt='' className='jar' />
+            <Label jarName={currentJarName} />
+          </div>
         </div>
-        <AddJobForm jarId={currentJar._id} />
+        <div className='job-form-container'>
+          <div id='job-links'>
+            <button className='link'>See remaining jobs</button>
+            <button className='link'>See completed jobs</button>
+          </div>
+          <AddJobForm jarId={currentJar._id} />
+        </div>
       </div>
     </div>
   );

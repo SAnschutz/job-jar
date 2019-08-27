@@ -30,19 +30,4 @@
     top: 2px;
     right: 2px;
   }
-
-  .link {
-    width: 100%;
-    border: none;
-    outline: none;
-    text-decoration: underline;
-    background: none;
-    color: $dark-slate-blue;
-    font-size: 16px;
-    &:hover {
-      border: none;
-      outline: none;
-      box-shadow: none;
-    }
-  }
 }
