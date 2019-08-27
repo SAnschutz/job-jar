@@ -21,6 +21,7 @@ const JarBase = props => {
 
   const [alert, setAlert] = useState('');
   const [isDisplayedAlert, setIsDisplayedAlert] = useState(false);
+  const [showDeleteLink, setShowDeleteLink] = useState(false);
 
   const firebaseId = props.firebase.currentUserId();
 
@@ -77,7 +78,7 @@ const JarBase = props => {
       const todoList = jobs.data.filter(job => job.completed === true);
       console.log(todoList.length);
       if (todoList.length === 0) {
-        setAlert('You have no uncompleted jobs in your jar!');
+        setAlert('No completed jobs');
         setIsDisplayedAlert(true);
       } else {
         const list = todoList.map(job => <p>{job.description}</p>);
@@ -89,12 +90,22 @@ const JarBase = props => {
         );
 
         setAlert(display);
+        setShowDeleteLink(true);
         setIsDisplayedAlert(true);
       }
     });
   };
 
-  const deleteCompletedJobs = () => {};
+  const deleteCompletedJobs = () => {
+    axios.delete(`/jobs/completed/${currentJar._id}`).then(numDeleted => {
+      console.log(numDeleted.data, ' num deleted');
+      setAlert('');
+      setShowDeleteLink(false);
+      setIsDisplayedAlert(false);
+      setAlert(`${numDeleted.data} job(s) deleted`);
+      setIsDisplayedAlert(true);
+    });
+  };
 
   const displayRandomJob = () => {
     axios.get(`/jobs/${currentJar._id}`).then(jobs => {
@@ -155,6 +166,8 @@ const JarBase = props => {
           alert={alert}
           setIsDisplayedAlert={setIsDisplayedAlert}
           setAlert={setAlert}
+          showDeleteLink={showDeleteLink}
+          deleteCompletedJobs={deleteCompletedJobs}
         />
       </Modal>
       <div className='flex-container'>
@@ -172,6 +185,7 @@ const JarBase = props => {
             jarId={currentJar._id}
             showCurrentJobs={showCurrentJobs}
             showCompletedJobs={showCompletedJobs}
+            deleteCompletedJobs={deleteCompletedJobs}
           />
         </div>
       </div>

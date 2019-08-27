@@ -12,6 +12,11 @@ export default function Alert(props) {
       >
         OK
       </button>
+      {props.showDeleteLink && (
+        <button className='link' onClick={props.deleteCompletedJobs}>
+          DELETE completed jobs
+        </button>
+      )}
     </div>
   );
 }
