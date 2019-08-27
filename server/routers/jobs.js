@@ -27,7 +27,33 @@ router.get('/jobs/:jarId', (req, res) => {
       res.send(jobs);
     });
   } catch (e) {
-    res.status(400).send();
+    res.status(400).send(e);
+  }
+});
+
+//get UNCOMPLETED jobs associated with current jarId
+router.get('/jobs/todo/:jarId', (req, res) => {
+  const jarId = mongoose.Types.ObjectId(req.params.jarId);
+
+  try {
+    Job.find({ jarId, completed: false }).then(jobs => {
+      res.send(jobs);
+    });
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+//get COMPLETED jobs associated with current jarId
+router.get('/jobs/done/:jarId', (req, res) => {
+  const jarId = mongoose.Types.ObjectId(req.params.jarId);
+
+  try {
+    Job.find({ jarId, completed: true }).then(jobs => {
+      res.send(jobs);
+    });
+  } catch (e) {
+    res.status(400).send(e);
   }
 });
 
@@ -86,6 +112,19 @@ router.delete('/jobs/:jobId', (req, res) => {
         return res.send('No job with that ID');
       }
       res.send('job deleted');
+    });
+  } catch (e) {
+    res.status(400).send();
+  }
+});
+
+//Delete all completed jobs for current jar (returns number of jobs deleted)
+router.delete('/jobs/completed/:jarId', (req, res) => {
+  const jarId = mongoose.Types.ObjectId(req.params.jarId);
+
+  try {
+    Job.deleteMany({ jarId, completed: true }).then(data => {
+      res.json(data.deletedCount);
     });
   } catch (e) {
     res.status(400).send();

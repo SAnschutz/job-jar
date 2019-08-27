@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
+import housekeepingimage from '../assets/housekeeping.jpg';
 import { WithFirebase } from '../contexts/firebase/context';
 
 import Navbar from '../components/Navbar';
@@ -26,13 +27,27 @@ const LoginPageBase = props => {
   return (
     <div className='login-page'>
       <Navbar />
-      <h1>Job Jar</h1>
-      <div className='button-group'>
-        <button onClick={loginWithGoogle}>Log In With Google</button>
-        <button onClick={openEmailLoginModal}>Log In With Email</button>
-        <Modal isOpen={emailModalIsOpen} className='email-login-modal modal'>
-          <EmailLoginModal setEmailModalIsOpen={setEmailModalIsOpen} />
-        </Modal>
+      <div className='flex-container'>
+        <div className='image-container'>
+          <img
+            src={housekeepingimage}
+            alt='drawing of man with cleaning supplies'
+          />
+        </div>
+        <div className='text-container'>
+          <h1>Job Jar</h1>
+          <div className='button-group'>
+            <button onClick={loginWithGoogle}>Log In With Google</button>
+            <button onClick={openEmailLoginModal}>Log In With Email</button>
+
+            <Modal
+              isOpen={emailModalIsOpen}
+              className='email-login-modal modal'
+            >
+              <EmailLoginModal setEmailModalIsOpen={setEmailModalIsOpen} />
+            </Modal>
+          </div>
+        </div>
       </div>
     </div>
   );

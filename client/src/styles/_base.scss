@@ -23,6 +23,13 @@ $brown: rgba(126, 79, 21, 1);
 body {
   background: $sky-blue;
   color: $dark-slate-blue;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
 }
 h1 {
   font-size: 36px;
