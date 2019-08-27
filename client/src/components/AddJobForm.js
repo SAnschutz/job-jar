@@ -33,6 +33,12 @@ export default function AddJobPage(props) {
         />
         <input type='submit' value='Submit' />
       </form>
+      <button className='link' onClick={props.showCurrentJobs}>
+        Show remaining jobs
+      </button>
+      <button className='link' onClick={props.showCompletedJobs}>
+        Show completed jobs
+      </button>
     </div>
   );
 }

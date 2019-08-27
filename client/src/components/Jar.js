@@ -48,6 +48,54 @@ const JarBase = props => {
     selectCurrentJar(newJar);
   };
 
+  const showCurrentJobs = () => {
+    axios.get(`/jobs/${currentJar._id}`).then(jobs => {
+      console.log(jobs.data);
+      const todoList = jobs.data.filter(job => job.completed === false);
+      console.log(todoList.length);
+      if (todoList.length === 0) {
+        setAlert('You have no uncompleted jobs in your jar!');
+        setIsDisplayedAlert(true);
+      } else {
+        const list = todoList.map(job => <p>{job.description}</p>);
+        const display = (
+          <div>
+            <h1>Remaining jobs:</h1>
+            {list}
+          </div>
+        );
+
+        setAlert(display);
+        setIsDisplayedAlert(true);
+      }
+    });
+  };
+
+  const showCompletedJobs = () => {
+    axios.get(`/jobs/${currentJar._id}`).then(jobs => {
+      console.log(jobs.data);
+      const todoList = jobs.data.filter(job => job.completed === true);
+      console.log(todoList.length);
+      if (todoList.length === 0) {
+        setAlert('You have no uncompleted jobs in your jar!');
+        setIsDisplayedAlert(true);
+      } else {
+        const list = todoList.map(job => <p>{job.description}</p>);
+        const display = (
+          <div>
+            <h1>Completed jobs:</h1>
+            {list}
+          </div>
+        );
+
+        setAlert(display);
+        setIsDisplayedAlert(true);
+      }
+    });
+  };
+
+  const deleteCompletedJobs = () => {};
+
   const displayRandomJob = () => {
     axios.get(`/jobs/${currentJar._id}`).then(jobs => {
       const todoList = jobs.data.filter(job => job.completed === false);
@@ -103,7 +151,11 @@ const JarBase = props => {
         />
       </Modal>
       <Modal isOpen={isDisplayedAlert} className='alert-modal modal'>
-        <Alert alert={alert} setIsDisplayedAlert={setIsDisplayedAlert} />
+        <Alert
+          alert={alert}
+          setIsDisplayedAlert={setIsDisplayedAlert}
+          setAlert={setAlert}
+        />
       </Modal>
       <div className='flex-container'>
         <div className='jar-container'>
@@ -116,11 +168,11 @@ const JarBase = props => {
           </div>
         </div>
         <div className='job-form-container'>
-          <div id='job-links'>
-            <button className='link'>See remaining jobs</button>
-            <button className='link'>See completed jobs</button>
-          </div>
-          <AddJobForm jarId={currentJar._id} />
+          <AddJobForm
+            jarId={currentJar._id}
+            showCurrentJobs={showCurrentJobs}
+            showCompletedJobs={showCompletedJobs}
+          />
         </div>
       </div>
     </div>

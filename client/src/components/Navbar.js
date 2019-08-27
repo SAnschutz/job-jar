@@ -19,7 +19,7 @@ const NavbarBase = props => {
     <div>
       {isSignedIn && (
         <div className='navbar'>
-          <label>Select Jar:</label>
+          <label>Change Jar:</label>
           <select id='select-jar-menu' onChange={props.changeJar}>
             <option disabled selected value=''>
               Choose Jar
