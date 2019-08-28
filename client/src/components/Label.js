@@ -10,19 +10,19 @@ export default function Label(props) {
         style={
           displayName.length > 9
             ? {
-                fontSize: '20px',
+                fontSize: '.5rem',
                 fontFamily: 'Delius Unicase'
               }
             : {
-                fontSize: '28px',
+                fontSize: '1.5rem',
                 fontFamily: 'Delius Unicase'
               }
         }
       >
         {displayName}
+        <br />
+        Job Jar
       </p>
-      <br />
-      Job Jar
     </div>
   );
 }

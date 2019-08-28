@@ -26,4 +26,20 @@
   #select-jar-menu {
     font-size: 14px;
   }
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-flow: row;
+    justify-items: stretch;
+    padding: 0 5px;
+    a,
+    label {
+      margin: 10px auto;
+      font-size: 12px;
+    }
+    .change-jar-label {
+      display: none;
+      margin-right: 0;
+    }
+  }
 }

@@ -19,7 +19,7 @@ const NavbarBase = props => {
     <div>
       {isSignedIn && (
         <div className='navbar'>
-          <label>Change Jar:</label>
+          <label className='change-jar-label'>Change Jar:</label>
           <select id='select-jar-menu' onChange={props.changeJar}>
             <option disabled selected value=''>
               Choose Jar
@@ -37,7 +37,7 @@ const NavbarBase = props => {
             )}
           </select>
           <Link to='#' onClick={openNewJarModal}>
-            Create A New Jar
+            Create New Jar
           </Link>
           <Link to='#' onClick={logout}>
             Log Out

@@ -51,9 +51,7 @@ const JarBase = props => {
 
   const showCurrentJobs = () => {
     axios.get(`/jobs/${currentJar._id}`).then(jobs => {
-      console.log(jobs.data);
       const todoList = jobs.data.filter(job => job.completed === false);
-      console.log(todoList.length);
       if (todoList.length === 0) {
         setAlert('You have no uncompleted jobs in your jar!');
         setIsDisplayedAlert(true);
@@ -74,9 +72,7 @@ const JarBase = props => {
 
   const showCompletedJobs = () => {
     axios.get(`/jobs/${currentJar._id}`).then(jobs => {
-      console.log(jobs.data);
       const todoList = jobs.data.filter(job => job.completed === true);
-      console.log(todoList.length);
       if (todoList.length === 0) {
         setAlert('No completed jobs');
         setIsDisplayedAlert(true);
@@ -98,7 +94,6 @@ const JarBase = props => {
 
   const deleteCompletedJobs = () => {
     axios.delete(`/jobs/completed/${currentJar._id}`).then(numDeleted => {
-      console.log(numDeleted.data, ' num deleted');
       setAlert('');
       setShowDeleteLink(false);
       setIsDisplayedAlert(false);
@@ -175,7 +170,7 @@ const JarBase = props => {
           <button id='select-job-button' onClick={displayRandomJob}>
             Select a Random Job
           </button>
-          <div className='jar-container'>
+          <div className='jar-setup'>
             <img src={jar} alt='' className='jar' />
             <Label jarName={currentJarName} />
           </div>
