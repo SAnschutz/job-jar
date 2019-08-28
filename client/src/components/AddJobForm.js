@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function AddJobPage(props) {
   const [newJob, setNewJob] = useState('');
-  const [message, setMessage] = useState([]);
+  const [message, setMessage] = useState('');
 
   const onChange = e => {
     setNewJob(e.target.value);
@@ -18,6 +18,9 @@ export default function AddJobPage(props) {
       newJob.length > 0 &&
         setMessage(`"${newJob}" has been added to the Job Jar.`);
       setNewJob('');
+      setTimeout(() => {
+        setMessage('');
+      }, 3000);
     });
   };
 

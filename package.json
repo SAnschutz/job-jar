@@ -1,0 +1,26 @@
+{
+  "name": "job-jar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm start --prefix client",
+    "server": "nodemon index.js --prefix server",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SAnschutz/job-jar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SAnschutz/job-jar/issues"
+  },
+  "homepage": "https://github.com/SAnschutz/job-jar#readme",
+  "dependencies": {
+    "concurrently": "^4.1.2"
+  }
+}

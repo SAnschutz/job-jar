@@ -10,7 +10,7 @@ export default function Label(props) {
         style={
           displayName.length > 9
             ? {
-                fontSize: '.5rem',
+                fontSize: '1rem',
                 fontFamily: 'Delius Unicase'
               }
             : {

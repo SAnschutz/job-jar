@@ -37,22 +37,22 @@
     color: darken($dark-slate-blue, 30%);
     font-size: 12vw;
   }
-
-  .flex-container {
-    flex-flow: column;
-    .image-container {
-      padding-top: 100px;
-      height: auto;
-      width: 100vw;
-      img {
-        position: relative;
-        transform: none;
+  @media (max-width: 900px) {
+    .flex-container {
+      flex-flow: column;
+      .image-container {
+        padding-top: 100px;
+        height: auto;
+        width: 100vw;
+        img {
+          position: relative;
+          transform: none;
+        }
+      }
+      .text-container {
+        width: 100%;
+        height: auto;
       }
     }
-  }
-
-  .text-container {
-    width: 100%;
-    height: auto;
   }
 }

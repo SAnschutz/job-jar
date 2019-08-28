@@ -83,7 +83,7 @@ const EmailLoginModalBase = props => {
         <button className='close-modal-button' onClick={closeModal}>
           X
         </button>
-        <button className='submit-button' onClick={onSubmit}>
+        <button type='submit' className='submit-button' onClick={onSubmit}>
           Submit
         </button>
         <button className='link' onClick={displayPasswordConfirm}>
