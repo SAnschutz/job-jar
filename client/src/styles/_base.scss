@@ -36,19 +36,19 @@ h1 {
 }
 
 p {
-  font-size: 24px;
+  font-size: 32px;
 }
 
 button {
   display: inline-block;
   margin: 10px;
   margin-top: 10px;
-  height: 30px;
+  height: 40px;
   width: 200px;
   border-radius: 5px;
   background: $slate-blue;
   color: $white;
-  font-size: 24px;
+  font-size: 32px;
   border: 1px solid $dark-slate-blue;
   &:hover {
     transform: translate(-2px, -2px);
@@ -67,7 +67,7 @@ button {
   text-decoration: underline;
   background: none;
   color: $dark-slate-blue;
-  font-size: 24px;
+  font-size: 32px;
   &:hover {
     border: none;
     outline: none;

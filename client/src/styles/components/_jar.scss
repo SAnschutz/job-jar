@@ -18,6 +18,7 @@
       #select-job-button {
         margin: 70px auto 50px;
         transform: scale(1.5);
+        width: 250px;
       }
 
       .jar-setup {
@@ -30,15 +31,15 @@
           top: 0;
           left: 50%;
           transform: translate(-50%, 0);
-          height: 450px;
+          height: 600px;
         }
 
         #label {
           position: absolute;
-          top: 225px;
+          top: 300px;
           left: 50%;
           transform: translate(-65%, 0%);
-          width: 160px;
+          width: 210px;
 
           // transform: translate(105%, -275%);
           border-top: 2px solid $dark-red;
@@ -61,14 +62,14 @@
         margin-bottom: 40px;
       }
       .link {
-        height: 20px;
+        height: 30px;
       }
 
       .add-job-form {
         width: 80%;
         height: 200px;
         margin-right: 20%;
-        margin-top: 30vh;
+        margin-top: 40vh;
 
         textarea {
           display: block;
@@ -151,7 +152,7 @@
 
           .link {
             height: auto;
-            font-size: 24px;
+            font-size: 32px;
           }
         }
       }
