@@ -56,8 +56,10 @@
 
     .job-form-container {
       flex-basis: 50%;
+      height: 100vh;
       display: flex;
       flex-flow: column;
+      align-content: flex-end;
       .job-buttons {
         margin-bottom: 40px;
       }
@@ -70,6 +72,10 @@
         height: 200px;
         margin-right: 20%;
         margin-top: 40vh;
+
+        .display-added-job {
+          height: 60px;
+        }
 
         textarea {
           display: block;
@@ -98,7 +104,7 @@
       }
     }
   }
-  @media (max-width: 1100px) {
+  @media (max-width: 750px) {
     .flex-container {
       position: relative;
       display: flex;
@@ -111,6 +117,7 @@
         display: flex;
         flex-flow: column;
         width: 100vw;
+        min-height: 800px;
 
         flex-basis: 600px;
         align-content: center;
@@ -129,13 +136,16 @@
           margin: 0 auto;
 
           @media (max-width: 600px) {
-            img {
-              width: 350px;
-              margin: 0 auto;
-            }
+            .jar-setup {
+              img {
+                width: 350px;
+                margin: -50px auto 0;
+              }
 
-            #label {
-              width: 120px;
+              #label {
+                width: 120px;
+                font-size: 10px;
+              }
             }
           }
         }

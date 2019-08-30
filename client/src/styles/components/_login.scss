@@ -40,7 +40,7 @@
     color: darken($dark-slate-blue, 30%);
     font-size: 12vw;
   }
-  @media (max-width: 900px) {
+  @media (max-width: 750px) {
     .flex-container {
       flex-flow: column;
       .image-container {

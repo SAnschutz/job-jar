@@ -34,8 +34,10 @@ export default function AddJobPage(props) {
           Show completed jobs
         </button>
       </div>
-      {!props.jarId && <h1>Select a jar to begin</h1>}
-      {message && <p>{message}</p>}
+      <div className='display-added-job'>
+        {!props.jarId && <h1>Select a jar to begin</h1>}
+        {message && <p>{message}</p>}
+      </div>
       <form id='job-form' onSubmit={onSubmit}>
         <textarea
           onChange={onChange}

@@ -17,7 +17,7 @@ const AppRouterBase = props => {
   return (
     <Router history={history} isAuthed={isAuthed}>
       <Switch>
-        <Route path='/' component={LoginPage} exact={true} />
+        <Route path='/' component={isAuthed ? Jar : LoginPage} exact={true} />
         <Route path='/myjars' component={isAuthed ? Jar : LoginPage} />
       </Switch>
     </Router>
