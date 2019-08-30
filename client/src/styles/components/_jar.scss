@@ -57,12 +57,18 @@
       flex-basis: 50%;
       display: flex;
       flex-flow: column;
+      .job-buttons {
+        margin-bottom: 40px;
+      }
+      .link {
+        height: 20px;
+      }
 
       .add-job-form {
         width: 80%;
         height: 200px;
         margin-right: 20%;
-        margin-top: 40vh;
+        margin-top: 30vh;
 
         textarea {
           display: block;
@@ -87,9 +93,6 @@
         input {
           @extend button;
           margin: 20px auto;
-        }
-        .link {
-          height: 10px;
         }
       }
     }
@@ -145,7 +148,11 @@
           padding: 0;
           align-items: center;
           margin-left: 5%;
-          // margin-right: auto;
+
+          .link {
+            height: auto;
+            font-size: 24px;
+          }
         }
       }
     }

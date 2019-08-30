@@ -26,6 +26,14 @@ export default function AddJobPage(props) {
 
   return (
     <div className='add-job-form'>
+      <div className='job-buttons'>
+        <button className='link' onClick={props.showCurrentJobs}>
+          Show remaining jobs
+        </button>
+        <button className='link' onClick={props.showCompletedJobs}>
+          Show completed jobs
+        </button>
+      </div>
       {!props.jarId && <h1>Select a jar to begin</h1>}
       {message && <p>{message}</p>}
       <form id='job-form' onSubmit={onSubmit}>
@@ -36,12 +44,6 @@ export default function AddJobPage(props) {
         />
         <input type='submit' value='Submit' />
       </form>
-      <button className='link' onClick={props.showCurrentJobs}>
-        Show remaining jobs
-      </button>
-      <button className='link' onClick={props.showCompletedJobs}>
-        Show completed jobs
-      </button>
     </div>
   );
 }

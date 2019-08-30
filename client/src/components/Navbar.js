@@ -8,6 +8,7 @@ import { WithFirebase } from '../contexts/firebase/context';
 const NavbarBase = props => {
   const logout = () => props.firebase.signOut();
   const isSignedIn = props.firebase.auth.currentUser;
+  console.log(isSignedIn, 'from navbar');
 
   const [createNewJarModalIsOpen, setCreateNewJarModalIsOpen] = useState(false);
 
