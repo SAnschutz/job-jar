@@ -12,7 +12,7 @@ const LoginPageBase = props => {
 
   const loginWithGoogle = async () => {
     await props.firebase.loginWithGoogle();
-    props.history.push('/jar');
+    props.history.push('/myjars');
     const firebaseId = await props.firebase.currentUserId();
     const email = await props.firebase.currentUserEmail();
     const user = { firebaseId, email };

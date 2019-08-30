@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import firebase from '../contexts/firebase/firebase';
 import { WithFirebase } from '../contexts/firebase/context';
+import history from '../App';
 
 const EmailLoginModalBase = props => {
   const [newAccount, setNewAccount] = useState(false);
@@ -35,6 +36,7 @@ const EmailLoginModalBase = props => {
       .then(() => {
         props.setEmailModalIsOpen(false);
         console.log('logged in');
+        history.push('/myjars');
       })
       .catch(error => setErrorMessage(error.message));
   };
