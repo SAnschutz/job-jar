@@ -48,7 +48,7 @@ button {
   border-radius: 5px;
   background: $slate-blue;
   color: $white;
-  font-size: 16px;
+  font-size: 24px;
   border: 1px solid $dark-slate-blue;
   &:hover {
     transform: translate(-2px, -2px);
@@ -67,7 +67,7 @@ button {
   text-decoration: underline;
   background: none;
   color: $dark-slate-blue;
-  font-size: 16px;
+  font-size: 24px;
   &:hover {
     border: none;
     outline: none;

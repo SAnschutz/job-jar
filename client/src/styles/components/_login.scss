@@ -47,6 +47,9 @@
         img {
           position: relative;
           transform: none;
+          width: 50vw;
+          max-width: 450px;
+          height: auto;
         }
       }
       .text-container {
