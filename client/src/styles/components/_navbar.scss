@@ -3,21 +3,73 @@
   top: 0;
   left: 0;
   z-index: 1;
-  height: 40px;
+  height: 60px;
   width: 100%;
+  padding-top: 5px;
   background: $slate-blue;
-  text-align: right;
+  color: $white;
 
-  a,
-  label {
-    color: $white;
-    display: inline-block;
-    margin: 10px 40px;
-    text-decoration: none;
-    font-size: 24px;
-    &:hover {
-      // text-decoration: underline;
-      transform: translate(-2px, -2px);
+  .navbar-headers {
+    display: flex;
+    flex-flow: row;
+    padding: 5px 10px;
+    align-content: center;
+    justify-content: space-between;
+
+    .arrow {
+      padding-left: 1rem;
+    }
+    .bars {
+      font-size: 2rem;
+    }
+    a {
+      color: $white;
+      display: inline-block;
+      margin: 10px 40px;
+      text-decoration: none;
+      font-size: 24px;
+      &:hover {
+        transform: translate(-2px, -2px);
+      }
+    }
+    li {
+      position: relative;
+      width: 400px;
+      text-align: left;
+      background: $slate-blue;
+      display: block;
+      transition-duration: 0.5s;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    ul li {
+      width: auto;
+      height: 100%;
+    }
+    .main-menu-icon {
+      width: 60px;
+    }
+
+    ul li ul {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      transition: all 0.5s ease;
+      margin-top: 0.5rem;
+      left: 0;
+      display: none;
+      li {
+        align-content: left;
+        width: 150%;
+      }
+    }
+    ul li:hover > ul,
+    ul li ul:hover {
+      visibility: visible;
+      opacity: 1;
+      display: block;
     }
   }
 
@@ -41,6 +93,20 @@
     .change-jar-label {
       display: none;
       margin-right: 0;
+    }
+  }
+
+  .logout-button {
+    border: 4 px solid $white;
+    margin-top: -2px;
+    padding: 0 5px;
+    width: auto;
+    background: lighten($slate-blue, 10%);
+  }
+
+  @media (max-width: 600px) {
+    button {
+      margin: 0;
     }
   }
 }

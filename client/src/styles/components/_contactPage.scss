@@ -1,0 +1,24 @@
+#contact-page {
+  padding-top: 180px;
+
+  h1 {
+    text-decoration: underline;
+    // font-size: 32px;
+  }
+
+  p {
+    width: 80vw;
+    max-width: 1200px;
+    line-height: 1.2;
+    margin: 3rem auto;
+    text-align: justify;
+  }
+
+  a {
+    font-size: 24px;
+  }
+
+  .email-link {
+    @extend p;
+  }
+}

@@ -43,9 +43,8 @@ const JarBase = props => {
       });
   };
 
-  const changeJar = e => {
-    const selectedJarName = e.target.value;
-    const newJar = jars.find(jar => jar.jarName === selectedJarName);
+  const changeJar = jarName => {
+    const newJar = jars.find(jar => jar.jarName === jarName);
     selectCurrentJar(newJar);
   };
 
