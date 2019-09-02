@@ -71,41 +71,17 @@
       display: block;
     }
   }
-
-  label {
-    margin-right: 10px;
-  }
   #select-jar-menu {
     font-size: 32px;
-  }
-
-  @media (max-width: 600px) {
-    display: flex;
-    flex-flow: row;
-    justify-items: stretch;
-    padding: 0 5px;
-    a,
-    label {
-      margin: 10px auto;
-      font-size: 24px;
-    }
-    .change-jar-label {
-      display: none;
-      margin-right: 0;
-    }
   }
 
   .logout-button {
     border: 4 px solid $white;
     margin-top: -2px;
-    padding: 0 5px;
     width: auto;
     background: lighten($slate-blue, 10%);
   }
-
-  @media (max-width: 600px) {
-    button {
-      margin: 0;
-    }
+  button {
+    margin: 0;
   }
 }
