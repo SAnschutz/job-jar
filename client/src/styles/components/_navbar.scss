@@ -84,4 +84,15 @@
   button {
     margin: 0;
   }
+
+  @media (hover: none) {
+    .navbar-headers {
+      ul li:target > ul,
+      ul li ul:target {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+      }
+    }
+  }
 }
