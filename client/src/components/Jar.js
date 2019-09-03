@@ -102,29 +102,36 @@ const JarBase = props => {
   };
 
   const displayRandomJob = () => {
-    axios.get(`/jobs/${currentJar._id}`).then(jobs => {
-      const todoList = jobs.data.filter(job => job.completed === false);
-      if (todoList.length === 0) {
-        setAlert('You have no jobs in your jar.');
-        setIsDisplayedAlert(true);
-      } else {
-        const currentJob = todoList.find(job => job.currentJob === true);
-        if (currentJob) {
-          setRandomJob(currentJob);
-          setIsDisplayedRandomJob(true);
+    if (!currentJar._id) {
+      setAlert(
+        'Start by creating or selecting a jar from the "Jars" menu above.'
+      );
+      setIsDisplayedAlert(true);
+    } else {
+      axios.get(`/jobs/${currentJar._id}`).then(jobs => {
+        const todoList = jobs.data.filter(job => job.completed === false);
+        if (todoList.length === 0) {
+          setAlert('You have no jobs in your jar.');
+          setIsDisplayedAlert(true);
         } else {
-          const randomIndex = Math.floor(Math.random() * todoList.length);
-          const randomJob = todoList[randomIndex];
-          setRandomJob(randomJob);
+          const currentJob = todoList.find(job => job.currentJob === true);
+          if (currentJob) {
+            setRandomJob(currentJob);
+            setIsDisplayedRandomJob(true);
+          } else {
+            const randomIndex = Math.floor(Math.random() * todoList.length);
+            const randomJob = todoList[randomIndex];
+            setRandomJob(randomJob);
 
-          setIsDisplayedRandomJob(true);
+            setIsDisplayedRandomJob(true);
 
-          axios.post(`jobs/select/${randomJob._id}`).then(() => {
-            console.log('Current job stored.');
-          });
+            axios.post(`jobs/select/${randomJob._id}`).then(() => {
+              console.log('Current job stored.');
+            });
+          }
         }
-      }
-    });
+      });
+    }
   };
 
   useEffect(() => {
@@ -181,6 +188,8 @@ const JarBase = props => {
             showCurrentJobs={showCurrentJobs}
             showCompletedJobs={showCompletedJobs}
             deleteCompletedJobs={deleteCompletedJobs}
+            setAlert={setAlert}
+            setIsDisplayedAlert={setIsDisplayedAlert}
           />
         </div>
       </div>

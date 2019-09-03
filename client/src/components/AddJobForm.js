@@ -7,7 +7,8 @@ export default function AddJobPage(props) {
 
   const onChange = e => {
     if (!props.jarId) {
-      setMessage('You must create a jar before adding jobs');
+      props.setAlert('You must create a jar before adding jobs.');
+      props.setIsDisplayedAlert(true);
     } else {
       setMessage('');
       setNewJob(e.target.value);

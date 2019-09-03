@@ -99,12 +99,9 @@
           }
         }
         input {
+          -webkit-appearance: none;
           @extend button;
           margin: 20px auto;
-
-          display: block;
-          margin: 10px auto;
-          width: 150px;
           &:disabled {
             background: lighten($slate-blue, 25%);
             &:hover {
@@ -132,7 +129,7 @@
 
         #select-job-button {
           margin: 100px auto 50px;
-          transform: scale(1.5);
+          transform: scale(1);
           width: 250px;
           z-index: 4;
         }
