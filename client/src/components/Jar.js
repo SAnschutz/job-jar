@@ -161,6 +161,7 @@ const JarBase = props => {
           setIsDisplayedAlert={setIsDisplayedAlert}
           setAlert={setAlert}
           showDeleteLink={showDeleteLink}
+          setShowDeleteLink={setShowDeleteLink}
           deleteCompletedJobs={deleteCompletedJobs}
         />
       </Modal>

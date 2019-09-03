@@ -61,7 +61,7 @@
       flex-flow: column;
       justify-content: flex-start;
       margin-top: 25vh;
-      .job-buttons {
+      .show-jobs-links {
         margin-bottom: 40px;
       }
       .link {
@@ -104,67 +104,71 @@
       }
     }
   }
+
   @media (max-width: 600px) {
     .flex-container {
-      position: relative;
-      display: flex;
       flex-flow: column;
       width: 100vw;
       height: auto;
 
       .jar-container {
-        position: relative;
+        height: auto;
+        min-height: 250px;
         display: flex;
         flex-flow: column;
-        width: 100vw;
-        min-height: 800px;
-
-        flex-basis: 600px;
         align-content: center;
-        img {
-          margin: 40px 0;
-        }
 
         #select-job-button {
-          margin: 100px auto 0;
-          transform: scale(1);
+          margin: 100px auto 50px;
+          transform: scale(1.5);
+          width: 250px;
+          z-index: 4;
         }
 
         .jar-setup {
           position: relative;
           width: 100vw;
+          height: 300px;
           margin: 0 auto;
 
-          @media (max-width: 600px) {
-            .jar-setup {
-              img {
-                width: 350px;
-                margin: -50px auto 0;
-              }
+          img {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 400px;
+            height: 400px;
+          }
 
-              #label {
-                width: 120px;
-                font-size: 10px;
-              }
-            }
+          #label {
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translate(-65%, 0%);
+            width: 125px;
+            font-size: 12px;
           }
         }
       }
 
       .job-form-container {
-        margin-top: 0;
+        margin-top: 60px;
         .add-job-form {
           width: 90%;
           height: 250px;
-          margin: 40px auto;
-          margin-top: 0;
+          margin: 0 auto;
           padding: 0;
           align-items: center;
           margin-left: 5%;
+          .show-jobs-links {
+            margin-top: 80px;
+            margin-bottom: 0;
+          }
 
           .link {
             height: auto;
             font-size: 32px;
+            z-index: 4;
           }
         }
       }

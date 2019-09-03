@@ -1,0 +1,31 @@
+.alert-modal {
+  h1 {
+    font-size: 48px;
+    margin-bottom: 30px;
+  }
+  p {
+    font-size: 40px;
+  }
+  button {
+    margin: 40px auto 10px auto;
+  }
+
+  .link {
+    font-size: 30px;
+  }
+
+  @media (max-width: 600px) {
+    p,
+    button {
+      font-size: 28px;
+      display: block;
+    }
+    h1 {
+      font-size: 32px;
+    }
+    .link {
+      font-size: 24px;
+      display: block;
+    }
+  }
+}

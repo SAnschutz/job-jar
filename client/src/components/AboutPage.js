@@ -24,15 +24,10 @@ export default function AboutPage() {
           JobJar was created with that same spirit in mind -- a place to keep
           track of all those annoying jobs that need to be done, and hopefully
           making it just a wee bit more fun when they can't be ignored anymore.
-        </p>
-        <p>
           Create a jar, or create multiple jars -- one for yourself, one for
-          your significant other, one for the kids... And while you're at it,
-          why not create some more PLEASANT jars? Vacations you're going to take
-          someday, people you've been intending to call, movies you've been
-          intending to watch...
+          your significant other, one for the kids...
         </p>
-        <p>Enjoy!</p>
+        <p>Enjoy, and get to work!</p>
         <Link to='/myjars'>Go back</Link>
       </div>
     </div>

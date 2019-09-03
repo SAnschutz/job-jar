@@ -38,8 +38,12 @@ h1 {
   font-size: 36px;
 }
 
-p {
+p,
+a {
   font-size: 32px;
+  @media (max-width: 600px) {
+    font-size: 16px;
+  }
 }
 
 button {
@@ -82,7 +86,7 @@ button {
   width: 80vw;
   max-width: 800px;
   margin: 0 auto;
-  margin-top: 75px;
+  margin-top: 200px;
   padding: 40px;
   background: $white;
   border: 5px solid $dark-slate-blue;

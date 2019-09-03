@@ -21,4 +21,8 @@
   .email-link {
     @extend p;
   }
+
+  @media (max-width: 600px) {
+    padding-top: 100px;
+  }
 }

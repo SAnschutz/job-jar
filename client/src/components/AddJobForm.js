@@ -26,7 +26,7 @@ export default function AddJobPage(props) {
 
   return (
     <div className='add-job-form'>
-      <div className='job-buttons'>
+      <div className='show-jobs-links'>
         <button className='link' onClick={props.showCurrentJobs}>
           Show remaining jobs
         </button>

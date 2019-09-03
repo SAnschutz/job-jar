@@ -24,9 +24,13 @@
   }
   @media (max-width: 600px) {
     .job-description {
-      font-size: 40px;
+      font-size: 32px;
     }
-    p {
+    p,
+    button {
+      font-size: 24px;
+    }
+    h1 {
       font-size: 32px;
     }
   }

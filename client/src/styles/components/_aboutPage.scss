@@ -17,4 +17,8 @@
   a {
     font-size: 24px;
   }
+
+  @media (max-width: 600px) {
+    padding-top: 100px;
+  }
 }
