@@ -5,7 +5,8 @@
   z-index: 1;
   height: 60px;
   width: 100%;
-  padding-top: 5px;
+  padding: 5px 20px 0;
+
   background: $slate-blue;
   color: $white;
 
@@ -22,6 +23,7 @@
     .bars {
       font-size: 2rem;
     }
+
     a {
       color: $white;
       display: inline-block;
@@ -32,13 +34,13 @@
         transform: translate(-2px, -2px);
       }
     }
+
     li {
       position: relative;
       width: 400px;
       text-align: left;
       background: $slate-blue;
       display: block;
-      transition-duration: 0.5s;
       &:hover {
         cursor: pointer;
       }
@@ -46,53 +48,38 @@
 
     ul li {
       width: auto;
-      height: 100%;
-    }
-    .main-menu-icon {
-      width: 60px;
-    }
-
-    ul li ul {
-      visibility: hidden;
-      opacity: 0;
-      position: absolute;
-      transition: all 0.5s ease;
-      left: 0;
-      display: none;
-      li {
-        align-content: left;
-        width: 150%;
+      ul {
+        position: absolute;
+        left: 0;
+        li {
+          align-content: left;
+          width: 150%;
+          height: 3rem;
+          &:hover {
+            background: lighten($slate-blue, 5%);
+          }
+        }
       }
     }
-    ul li:hover > ul,
-    ul li ul:hover {
-      visibility: visible;
-      opacity: 1;
-      display: block;
-    }
-  }
-  #select-jar-menu {
-    font-size: 32px;
-  }
 
-  .logout-button {
-    border: 4 px solid $white;
-    margin-top: -2px;
-    width: auto;
-    background: lighten($slate-blue, 10%);
-  }
-  button {
-    margin: 0;
-  }
+    .main-menu-dropdown-button,
+    .jar-dropdown-button,
+    .logout-button {
+      margin: 0;
+      width: auto;
+      border: none;
 
-  @media (hover: none) {
-    .navbar-headers {
-      ul li:target > ul,
-      ul li ul:target {
-        visibility: visible;
-        opacity: 1;
-        display: block;
+      &:hover {
+        transform: translate(-2px, -2px);
+        border: none;
+        box-shadow: none;
+        cursor: pointer;
       }
+    }
+
+    .jar-dropdown-button {
+      width: 200px;
+      text-align: left;
     }
   }
 }

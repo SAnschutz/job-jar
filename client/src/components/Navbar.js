@@ -11,10 +11,21 @@ const NavbarBase = props => {
   const location = history.location.pathname;
 
   const [createNewJarModalIsOpen, setCreateNewJarModalIsOpen] = useState(false);
+  const [showMainDropdownMenu, setShowMainDropdownMenu] = useState(false);
+  const [showJarDropdownMenu, setShowJarDropdownMenu] = useState(false);
 
   const openNewJarModal = () => {
     props.setIsOpenFirstJarModal(false);
     setCreateNewJarModalIsOpen(true);
+    setShowJarDropdownMenu(false);
+  };
+
+  const toggleShowJars = () => {
+    setShowJarDropdownMenu(showJarDropdownMenu === true ? false : true);
+  };
+
+  const toggleMainMenu = () => {
+    setShowMainDropdownMenu(showMainDropdownMenu === true ? false : true);
   };
 
   // const openDeleteJarModal = () => {
@@ -25,19 +36,26 @@ const NavbarBase = props => {
         <div className='navbar-headers'>
           <ul>
             <li className='main-menu-icon'>
-              <i class='fa fa-bars bars' />
-              <ul>
-                <li>
-                  <Link to='/about' className='navbar-link'>
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link to='/contact' className='navbar-link'>
-                    Contact
-                  </Link>
-                </li>
-              </ul>
+              <button
+                className='main-menu-dropdown-button'
+                onClick={toggleMainMenu}
+              >
+                <i class='fa fa-bars bars' />
+              </button>
+              {showMainDropdownMenu && (
+                <ul>
+                  <li>
+                    <Link to='/about' className='navbar-link'>
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/contact' className='navbar-link'>
+                      Contact
+                    </Link>
+                  </li>
+                </ul>
+              )}
             </li>
           </ul>
 
@@ -45,32 +63,46 @@ const NavbarBase = props => {
             <div>
               <ul id='select-jar-menu'>
                 <li>
-                  Jars
-                  <i class='fa fa-angle-down arrow' />
-                  <ul>
-                    {props.jars &&
-                      props.jars.length > 0 &&
-                      props.jars.map(jar => (
-                        <li>
-                          <Link
-                            to='#'
-                            onClick={() => props.changeJar(jar.jarName)}
-                            className='jar-select-link navbar-link'
-                          >
-                            {jar.jarName}'s Jar
-                          </Link>
-                        </li>
-                      ))}
-                    <li>
-                      <Link
-                        to='#'
-                        onClick={openNewJarModal}
-                        className='navbar-link'
-                      >
-                        Add A Jar
-                      </Link>
-                    </li>
-                  </ul>
+                  <button
+                    className='jar-dropdown-button'
+                    onClick={toggleShowJars}
+                  >
+                    Jars
+                    {showJarDropdownMenu ? (
+                      <i class='fa fa-angle-up arrow' />
+                    ) : (
+                      <i class='fa fa-angle-down arrow' />
+                    )}
+                  </button>
+                  {showJarDropdownMenu && (
+                    <ul>
+                      {props.jars &&
+                        props.jars.length > 0 &&
+                        props.jars.map(jar => (
+                          <li>
+                            <Link
+                              to='#'
+                              onClick={() => {
+                                props.changeJar(jar.jarName);
+                                setShowJarDropdownMenu(false);
+                              }}
+                              className='jar-select-link navbar-link'
+                            >
+                              {jar.jarName}'s Jar
+                            </Link>
+                          </li>
+                        ))}
+                      <li>
+                        <Link
+                          to='#'
+                          onClick={openNewJarModal}
+                          className='navbar-link'
+                        >
+                          Add A Jar
+                        </Link>
+                      </li>
+                    </ul>
+                  )}
                 </li>
               </ul>
             </div>
