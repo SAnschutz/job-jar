@@ -32,13 +32,13 @@ export default function DisplayRandomJob(props) {
             <span>fully completed</span> this task!
           </p>
           <button onClick={markAsCompleted}>DONE</button>
-          <button onClick={returnJobToJar} className='link'>
+          <button onClick={returnJobToJar} className='link message'>
             I can't do this now -- put it back in the jar.
           </button>
         </div>
       )}
       {message && (
-        <div>
+        <div className='message'>
           <p>{message}</p>
           <button onClick={() => closeModal()}>THANKS</button>
         </div>

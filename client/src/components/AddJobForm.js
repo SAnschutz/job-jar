@@ -6,7 +6,12 @@ export default function AddJobPage(props) {
   const [message, setMessage] = useState('');
 
   const onChange = e => {
-    setNewJob(e.target.value);
+    if (!props.jarId) {
+      setMessage('You must create a jar before adding jobs');
+    } else {
+      setMessage('');
+      setNewJob(e.target.value);
+    }
   };
 
   const onSubmit = e => {
@@ -34,17 +39,14 @@ export default function AddJobPage(props) {
           Show completed jobs
         </button>
       </div>
-      <div className='display-added-job'>
-        {!props.jarId && <h1>Select a jar to begin</h1>}
-        {message && <p>{message}</p>}
-      </div>
+      <div className='display-added-job'>{message && <p>{message}</p>}</div>
       <form id='job-form' onSubmit={onSubmit}>
         <textarea
           onChange={onChange}
           placeholder='Add a new job'
           value={newJob}
         />
-        <input type='submit' value='Submit' />
+        <input type='submit' value='Submit' disabled={!props.jarId} />
       </form>
     </div>
   );
