@@ -52,11 +52,14 @@
         position: absolute;
         left: 0;
         li {
-          align-content: left;
           width: 150%;
           height: 3rem;
           &:hover {
             background: lighten($slate-blue, 5%);
+          }
+          a {
+            width: 100%;
+            text-align: left;
           }
         }
       }
@@ -73,7 +76,6 @@
         transform: translate(-2px, -2px);
         border: none;
         box-shadow: none;
-        cursor: pointer;
       }
     }
 

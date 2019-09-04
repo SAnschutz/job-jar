@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
-import CreateJarModal from '../components/CreateJarModal';
+import CreateJarModal from './CreateJarModal';
+import DeleteJarModal from './DeleteJarModal';
 import { WithFirebase } from '../contexts/firebase/context';
 import { history } from '../AppRouter';
 
@@ -10,13 +11,20 @@ const NavbarBase = props => {
   const isSignedIn = props.firebase.auth.currentUser;
   const location = history.location.pathname;
 
-  const [createNewJarModalIsOpen, setCreateNewJarModalIsOpen] = useState(false);
+  const [isOpenCreateNewJarModal, setIsOpenCreateNewJarModal] = useState(false);
+  const [isOpenDeleteJarModal, setIsOpenDeleteJarModal] = useState(false);
+
   const [showMainDropdownMenu, setShowMainDropdownMenu] = useState(false);
   const [showJarDropdownMenu, setShowJarDropdownMenu] = useState(false);
 
   const openNewJarModal = () => {
     props.setIsOpenFirstJarModal(false);
-    setCreateNewJarModalIsOpen(true);
+    setIsOpenCreateNewJarModal(true);
+    setShowJarDropdownMenu(false);
+  };
+
+  const openDeleteJarModal = () => {
+    setIsOpenDeleteJarModal(true);
     setShowJarDropdownMenu(false);
   };
 
@@ -28,8 +36,6 @@ const NavbarBase = props => {
     setShowMainDropdownMenu(showMainDropdownMenu === true ? false : true);
   };
 
-  // const openDeleteJarModal = () => {
-  // };
   return (
     <div className='navbar'>
       {isSignedIn && (
@@ -98,7 +104,16 @@ const NavbarBase = props => {
                           onClick={openNewJarModal}
                           className='navbar-link'
                         >
-                          Add A Jar
+                          + Add A Jar
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to='#'
+                          onClick={openDeleteJarModal}
+                          className='navbar-link'
+                        >
+                          - Delete A Jar
                         </Link>
                       </li>
                     </ul>
@@ -110,14 +125,23 @@ const NavbarBase = props => {
           <button onClick={logout} className='logout-button'>
             Log Out
           </button>
-
           <Modal
-            isOpen={createNewJarModalIsOpen}
+            isOpen={isOpenCreateNewJarModal}
             className='new-jar-modal modal'
           >
             <CreateJarModal
-              setCreateNewJarModalIsOpen={setCreateNewJarModalIsOpen}
+              setIsOpenCreateNewJarModal={setIsOpenCreateNewJarModal}
               createJar={props.createJar}
+            />
+          </Modal>
+          <Modal
+            className='delete-jar-modal modal'
+            isOpen={isOpenDeleteJarModal}
+          >
+            <DeleteJarModal
+              setIsOpenDeleteJarModal={setIsOpenDeleteJarModal}
+              jars={props.jars}
+              deleteJar={props.deleteJar}
             />
           </Modal>
         </div>
@@ -129,13 +153,3 @@ const NavbarBase = props => {
 const Navbar = WithFirebase(NavbarBase);
 
 export default Navbar;
-
-// <li>
-// <Link
-//   to='#'
-//   onClick={openDeleteJarModal}
-//   className='navbar-link'
-// >
-//   Delete A Jar
-// </Link>
-// </li>

@@ -5,7 +5,7 @@ const CreateJarModalBase = props => {
   const [jarName, setJarName] = useState('');
 
   const closeModal = () => {
-    props.setCreateNewJarModalIsOpen(false);
+    props.setIsOpenCreateNewJarModal(false);
   };
 
   const createJar = () => {
@@ -24,6 +24,7 @@ const CreateJarModalBase = props => {
       <p>Enter jar owner's first name:</p>
       <form onSubmit={onSubmit}>
         <input
+          autoFocus
           type='text'
           value={jarName}
           onChange={e => setJarName(e.target.value)}

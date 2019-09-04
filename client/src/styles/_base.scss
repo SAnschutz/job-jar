@@ -5,7 +5,7 @@ $slate-blue: rgba(95, 112, 190, 1);
 $yellow: rgba(254, 242, 52, 1);
 $dark-slate-blue: rgba(74, 90, 150, 1);
 $dark-red: #b15679;
-$bright-red: rgba(237, 73, 97, 1);
+$bright-red: rgb(206, 15, 44);
 $coral: rgba(242, 134, 48, 1);
 $green: rgba(98, 207, 107, 1);
 $white: rgba(252, 253, 253, 1);
@@ -61,6 +61,7 @@ button {
     transform: translate(-2px, -2px);
     transition: 0.1s;
     box-shadow: 4px 4px $dark-slate-blue;
+    cursor: pointer;
   }
   &:focus {
     outline: none;

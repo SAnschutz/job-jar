@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jar from '../assets/jarsilhouette.svg';
-import Label from '../components/Label';
-import Navbar from '../components/Navbar';
+import Label from './Label';
+import Navbar from './Navbar';
 import AddJobForm from './AddJobForm';
 import FirstJarModal from './FirstJarModal';
 import Alert from './Alert';
 import Modal from 'react-modal';
 import { WithFirebase } from '../contexts/firebase/context';
 import DisplayRandomJob from './DisplayRandomJob';
+import DeleteJarModal from './DeleteJarModal';
 
 const JarBase = props => {
   const [isOpenFirstJarModal, setIsOpenFirstJarModal] = useState(false);
@@ -25,27 +26,57 @@ const JarBase = props => {
 
   const firebaseId = props.firebase.currentUserId();
 
-  const selectCurrentJar = jarName => {
-    if (jarName) {
-      setCurrentJar(jarName);
-      setCurrentJarName(jarName.jarName);
+  const createJar = jarName => {
+    const jarNames = jars.map(jar => jar.jarName);
+    if (jarNames.includes(jarName)) {
+      setAlert(
+        'You already have a jar by that name.  Please choose a different name.'
+      );
+      setIsDisplayedAlert(true);
+    } else {
+      axios
+        .post('/jars', { jarName, ownerFirebaseId: firebaseId })
+        .then(jarList => {
+          setJars(jarList.data);
+          const newJar = jarList.data.find(jar => jar.jarName === jarName);
+
+          selectCurrentJar(newJar);
+        });
     }
   };
 
-  const createJar = jarName => {
-    axios
-      .post('/jars', { jarName, ownerFirebaseId: firebaseId })
-      .then(jarList => {
-        setJars(jarList.data);
-        const newJar = jarList.data.find(jar => jar.jarName === jarName);
+  const deleteJar = nameOfJarToDelete => {
+    const jarToDelete = jars.filter(jar => jar.jarName === nameOfJarToDelete);
+    const jarId = jarToDelete[0]._id;
+    const savedJarName = currentJarName;
+    setCurrentJar({});
+    setCurrentJarName('');
 
-        selectCurrentJar(newJar);
+    axios.delete(`/jars/${jarId}`).then(() => {
+      axios.get(`/jars/${firebaseId}`).then(jarList => {
+        setJars(jarList.data);
+        selectCurrentJar(jarList.data[0]);
+        const newJarNames = jarList.data.map(jar => jar.jarName);
+        if (newJarNames.includes(savedJarName)) {
+          changeJar(savedJarName);
+        }
       });
+    });
+
+    setAlert(`${nameOfJarToDelete}'s Jar has been deleted`);
+    setIsDisplayedAlert(true);
+  };
+
+  const selectCurrentJar = jar => {
+    if (jar) {
+      setCurrentJar(jar);
+      setCurrentJarName(jar.jarName);
+    }
   };
 
   const changeJar = jarName => {
     const newJar = jars.find(jar => jar.jarName === jarName);
-    selectCurrentJar(newJar);
+    newJar.jarName.length > 0 && selectCurrentJar(newJar);
   };
 
   const showCurrentJobs = () => {
@@ -150,6 +181,7 @@ const JarBase = props => {
         jars={jars}
         changeJar={changeJar}
         createJar={createJar}
+        deleteJar={deleteJar}
         isOpenFirstJarModal={isOpenFirstJarModal}
         setIsOpenFirstJarModal={setIsOpenFirstJarModal}
       />
@@ -184,6 +216,7 @@ const JarBase = props => {
         </div>
         <div className='job-form-container'>
           <AddJobForm
+            jars={jars}
             jarId={currentJar._id}
             showCurrentJobs={showCurrentJobs}
             showCompletedJobs={showCompletedJobs}

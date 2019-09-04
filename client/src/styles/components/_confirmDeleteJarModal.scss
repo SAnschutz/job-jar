@@ -1,0 +1,29 @@
+.confirm-delete-jar-modal {
+  position: relative;
+  width: 90vw;
+  max-width: 800px;
+  //   border-color: $bright-red;
+
+  p {
+    padding: 10px;
+  }
+  h1 {
+    font-size: 48px;
+  }
+  span {
+    text-decoration: double underline $bright-red;
+    text-transform: uppercase;
+  }
+
+  button {
+    display: block;
+    margin: 20px auto;
+    width: 250px;
+    max-width: 70vw;
+  }
+
+  .confirm-delete-jar-button {
+    margin-top: 30px;
+    background: $bright-red;
+  }
+}

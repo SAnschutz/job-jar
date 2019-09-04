@@ -48,4 +48,15 @@ router.get('/jars/jobs/:jarId', (req, res) => {
   }
 });
 
+router.delete('/jars/:jarId', (req, res) => {
+  const jarId = req.params.jarId;
+  try {
+    Jar.findByIdAndDelete(jarId).then(() => {
+      res.status(200).send('Jar has been deleted');
+    });
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
 module.exports = router;

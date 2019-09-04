@@ -28,7 +28,7 @@ export default function DisplayRandomJob(props) {
       {!message && (
         <div>
           <p>
-            Do not click DONE until you've <br />
+            Do <span>not</span> click DONE until you've <br />
             <span>fully completed</span> this task!
           </p>
           <button onClick={markAsCompleted}>DONE</button>
