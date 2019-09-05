@@ -6,7 +6,7 @@
   input {
     display: block;
     margin: 0 auto;
-    height: 30px;
+    height: 40px;
     font-size: 32px;
   }
 
@@ -16,12 +16,15 @@
 
   .submit-button {
     display: block;
-    margin: 10px auto;
+    margin: 30px auto;
     width: 150px;
   }
 
   input {
     width: 95%;
+    max-width: 300px;
+    margin: 10px auto;
+    height: 40px;
     max-width: 300px;
     margin: 10px auto;
   }
@@ -34,5 +37,8 @@
     position: absolute;
     top: 2px;
     right: 2px;
+  }
+  @media (max-width: 600px) {
+    font-size: 20px;
   }
 }
