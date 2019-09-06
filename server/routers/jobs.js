@@ -92,10 +92,10 @@ router.post('/jobs/completed/:jobId', (req, res) => {
   const jobId = req.params.jobId;
 
   try {
-    Job.findById(jobId).then(job => {
+    Job.findById(jobId).then(async job => {
       job.completed = true;
       job.currentJob = false;
-      job.save();
+      await job.save();
       res.status(200).send(job);
     });
   } catch (e) {

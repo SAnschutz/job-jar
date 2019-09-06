@@ -20,7 +20,6 @@ const userRouter = require('./routers/user');
 const jarRouter = require('./routers/jars');
 const jobRouter = require('./routers/jobs');
 
-// app.use(express.json());
 app.use(userRouter);
 app.use(jarRouter);
 app.use(jobRouter);
@@ -33,7 +32,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
-// if (process.env.NODE_ENV === 'production') {
 // Serve any static files
 app.use(express.static(__dirname + 'client/build'));
 

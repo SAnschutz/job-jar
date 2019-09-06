@@ -9,7 +9,6 @@ import Alert from './Alert';
 import Modal from 'react-modal';
 import { WithFirebase } from '../contexts/firebase/context';
 import DisplayRandomJob from './DisplayRandomJob';
-import DeleteJarModal from './DeleteJarModal';
 
 const JarBase = props => {
   const [isOpenFirstJarModal, setIsOpenFirstJarModal] = useState(false);
@@ -22,6 +21,10 @@ const JarBase = props => {
 
   const [alert, setAlert] = useState('');
   const [isDisplayedAlert, setIsDisplayedAlert] = useState(false);
+  const [thanksButton, setThanksButton] = useState(false);
+  const [fancyButton, setFancyButton] = useState(false);
+  const [throwConfetti, setThrowConfetti] = useState(false);
+
   const [showDeleteLink, setShowDeleteLink] = useState(false);
 
   const firebaseId = props.firebase.currentUserId();
@@ -156,9 +159,9 @@ const JarBase = props => {
 
             setIsDisplayedRandomJob(true);
 
-            axios.post(`jobs/select/${randomJob._id}`).then(() => {
-              console.log('Current job stored.');
-            });
+            axios
+              .post(`jobs/select/${randomJob._id}`)
+              .then(() => console.log('set'));
           }
         }
       });
@@ -192,6 +195,12 @@ const JarBase = props => {
         <DisplayRandomJob
           randomJob={randomJob}
           setIsDisplayedRandomJob={setIsDisplayedRandomJob}
+          currentJar={currentJar}
+          setIsDisplayedAlert={setIsDisplayedAlert}
+          setAlert={setAlert}
+          setThanksButton={setThanksButton}
+          setFancyButton={setFancyButton}
+          setThrowConfetti={setThrowConfetti}
         />
       </Modal>
       <Modal isOpen={isDisplayedAlert} className='alert-modal modal'>
@@ -199,6 +208,12 @@ const JarBase = props => {
           alert={alert}
           setIsDisplayedAlert={setIsDisplayedAlert}
           setAlert={setAlert}
+          fancyButton={fancyButton}
+          setFancyButton={setFancyButton}
+          thanksButton={thanksButton}
+          setThanksButton={setThanksButton}
+          throwConfetti={throwConfetti}
+          setThrowConfetti={setThrowConfetti}
           showDeleteLink={showDeleteLink}
           setShowDeleteLink={setShowDeleteLink}
           deleteCompletedJobs={deleteCompletedJobs}

@@ -7,7 +7,6 @@ export default function ConfirmDeleteJarModal(props) {
 
   const deleteJar = () => {
     props.deleteJar(props.NameOfJarToDelete);
-    // closeModal();
     props.setIsOpenDeleteJarModal(false);
   };
 

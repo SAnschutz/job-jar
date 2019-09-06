@@ -40,8 +40,6 @@
           left: 50%;
           transform: translate(-65%, 0%);
           width: 210px;
-
-          // transform: translate(105%, -275%);
           border-top: 2px solid $dark-red;
           border-bottom: 2px solid $dark-red;
           p {
@@ -80,6 +78,8 @@
           p {
             position: absolute;
             bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 1.5em;
           }
         }
@@ -178,6 +178,10 @@
           .show-jobs-links {
             margin-top: 80px;
             margin-bottom: 0;
+          }
+          .display-added-job {
+            height: 100px;
+            width: 100vw;
           }
 
           .link {

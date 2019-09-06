@@ -14,6 +14,36 @@
     font-size: 30px;
   }
 
+  .fancy-button {
+    animation-name: fancyButton;
+    animation-duration: 2s;
+    animation-iteration-count: 3;
+  }
+
+  @keyframes fancyButton {
+    0% {
+      transform: rotateY(360deg);
+      background: $yellow;
+    }
+    25% {
+      background: $bright-red;
+    }
+    50% {
+      background: $green;
+    }
+    75% {
+      background: $yellow;
+    }
+    100% {
+      background: $bright-red;
+    }
+  }
+
+  #confetti {
+    width: 100vw;
+    height: 100vh;
+  }
+
   @media (max-width: 600px) {
     p,
     button {

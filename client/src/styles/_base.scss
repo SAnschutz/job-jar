@@ -87,6 +87,8 @@ button {
 .modal {
   width: 80vw;
   max-width: 800px;
+  max-height: 70vh;
+  overflow: scroll;
   margin: 0 auto;
   margin-top: 200px;
   padding: 40px;

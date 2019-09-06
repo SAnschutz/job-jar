@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import firebase from '../contexts/firebase/firebase';
 import { WithFirebase } from '../contexts/firebase/context';
 import history from '../App';
 

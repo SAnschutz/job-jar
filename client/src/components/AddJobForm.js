@@ -22,7 +22,7 @@ export default function AddJobPage(props) {
     const jarId = props.jarId;
     axios.post('/jobs', { description, jarId }).then(job => {
       newJob.length > 0 &&
-        setMessage(`"${newJob}" has been added to the Job Jar.`);
+        setMessage(`"${newJob}" has been added to your jar.`);
       setNewJob('');
       setTimeout(() => {
         setMessage('');

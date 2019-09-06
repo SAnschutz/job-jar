@@ -15,7 +15,6 @@ export default function DeleteJarModal(props) {
     props.setIsOpenDeleteJarModal(false);
   };
   const openConfirmDeleteJarModal = () => {
-    // props.setIsOpenDeleteJarModal(false);
     setIsOpenConfirmDeleteJarModal(true);
   };
 
