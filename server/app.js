@@ -27,17 +27,18 @@ app.use(jobRouter);
 //Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
   //Set static folder
-  app.use(express.static('client/build'));
+  app.use(express.static(path.join(__dirname, 'client', 'build')));
+  // ''client/build'));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
 }
 // Serve any static files
-app.use(express.static(__dirname + 'client/build'));
+// app.use(express.static(__dirname + 'client/build'));
 
-// Handle React routing, return all requests to React app
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+// // Handle React routing, return all requests to React app
+// app.get('*', function(req, res) {
+//   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+// });
 
 module.exports = app;
