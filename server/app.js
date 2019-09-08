@@ -27,7 +27,7 @@ app.use(jobRouter);
 //Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
   //Set static folder
-  app.use(express.static('client/build'));
+  app.use(express.static(path.join(__dirname, '..', 'client/build')));
 
   // Handle React routing, return all requests to React app
   app.get('*', (req, res) => {
