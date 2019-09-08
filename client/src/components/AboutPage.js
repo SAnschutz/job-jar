@@ -29,7 +29,7 @@ export default function AboutPage() {
           for your significant other, one for the kids...
         </p>
         <p>Enjoy, and get to work!</p>
-        <Link to='/myjars'>Go back</Link>
+        <Link to='/'>Go back</Link>
       </div>
     </div>
   );

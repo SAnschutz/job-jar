@@ -15,8 +15,13 @@
 
   a {
     font-size: 24px;
+    padding-bottom: 80px;
   }
 
+  .email-link {
+    @extend p;
+    display: block;
+  }
   @media (max-width: 600px) {
     padding-top: 100px;
     p {

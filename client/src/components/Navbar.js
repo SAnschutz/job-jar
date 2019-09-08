@@ -7,7 +7,10 @@ import { WithFirebase } from '../contexts/firebase/context';
 import { history } from '../AppRouter';
 
 const NavbarBase = props => {
-  const logout = () => props.firebase.signOut();
+  const logout = () => {
+    props.firebase.signOut();
+    history.push('/');
+  };
   const isSignedIn = props.firebase.auth.currentUser;
   const location = history.location.pathname;
 
